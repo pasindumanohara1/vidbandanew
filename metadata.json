@@ -1,0 +1,9 @@
+
+{
+  "name": "Vidbanda",
+  "description": "A premium cinematic streaming experience featuring an extensive library of movies and TV shows, powered by TMDB and multiple high-speed streaming servers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
