@@ -5,6 +5,10 @@ import { tmdbService } from '../services/tmdbService';
 import { TMDBDetail, MediaType, MyListItem, TMDBVideo } from '../types';
 import { TMDB_BACKDROP_BASE, TMDB_IMAGE_BASE, SERVERS } from '../constants';
 import SectionRow from '../components/SectionRow';
+import Ad728 from '../components/Ad728';
+import Ad300x250 from '../components/Ad300x250';
+import Ad160x600 from '../components/Ad160x600';
+import SocialBar from '../components/SocialBar';
 
 const TrailerModal: React.FC<{ videoKey: string; onClose: () => void }> = ({ videoKey, onClose }) => {
   return (
@@ -38,6 +42,7 @@ const DetailPage: React.FC = () => {
   const [season, setSeason] = useState(1);
   const [episode, setEpisode] = useState(1);
   const [isSaved, setIsSaved] = useState(false);
+  const [liked, setLiked] = useState(false);
   const [showTrailer, setShowTrailer] = useState(false);
   const playerRef = useRef<HTMLDivElement>(null);
 
@@ -124,16 +129,22 @@ const DetailPage: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 -mt-48 relative z-10">
+
+        <Ad728 id="ad-728-detail-top" />
+
         <div className="flex flex-col md:flex-row gap-12">
           {/* Poster */}
           <div className="flex-shrink-0 w-56 md:w-80 mx-auto md:mx-0">
             <div className="aspect-[2/3] rounded-[2.5rem] overflow-hidden glass border border-white/20 shadow-[0_32px_64px_rgba(0,0,0,0.6)]">
               <img src={`${TMDB_IMAGE_BASE}${data.poster_path}`} className="w-full h-full object-cover" alt={data.title} />
             </div>
+            <div className="mt-6 hidden md:block">
+              <Ad300x250 id="ad-300x250-poster" />
+            </div>
           </div>
 
           {/* Info */}
-          <div className="flex-1 text-center md:text-left pt-12 md:pt-24">
+          <div className="flex-1 min-w-0 text-center md:text-left pt-12 md:pt-24">
             <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none mb-4 uppercase">
               {data.title || data.name}
             </h1>
@@ -160,6 +171,10 @@ const DetailPage: React.FC = () => {
               {data.overview}
             </p>
 
+            <div className="flex justify-center md:justify-start mb-8">
+              <Ad300x250 id="ad-300x250-info" />
+            </div>
+
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               <button 
                 onClick={scrollToPlayer}
@@ -178,23 +193,57 @@ const DetailPage: React.FC = () => {
                   Watch Trailer
                 </button>
               )}
-
               <button 
                 onClick={toggleMyList}
-                className={`px-10 py-5 rounded-2xl font-black uppercase tracking-[0.2em] transition-all border active:scale-95 text-[11px] ${
+                className={`px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] transition-all border active:scale-95 text-[11px] ${
                   isSaved 
                     ? 'bg-blue-600/20 border-blue-500 text-blue-400' 
                     : 'glass text-white hover:bg-white/10 border-white/10'
                 }`}
               >
-                {isSaved ? 'In Library' : 'Add to List'}
+                {isSaved ? 'Saved' : 'Save'}
+              </button>
+
+              <button
+                onClick={() => { window.open(getEmbedUrl(), '_blank', 'noopener'); }}
+                className="px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] transition-all border glass text-white hover:bg-white/10 border-white/10 active:scale-95 text-[11px]"
+              >
+                Direct Link
+              </button>
+
+              <button
+                onClick={() => { window.open(getEmbedUrl(), '_blank', 'noopener'); }}
+                className="px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] transition-all border glass text-white hover:bg-white/10 border-white/10 active:scale-95 text-[11px]"
+              >
+                Download
+              </button>
+
+              <button
+                onClick={() => setLiked(s => !s)}
+                className={`px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] transition-all border active:scale-95 text-[11px] ${liked ? 'bg-red-600 text-white border-red-500' : 'glass text-white border-white/10 hover:bg-white/10'}`}
+              >
+                {liked ? 'Liked' : 'Like'}
+              </button>
+
+              <button
+                onClick={() => window.open('https://www.effectivegatecpm.com/z9icytup?key=0ad10dd7c15367b15db7864bfbce7781', '_blank', 'noopener')}
+                className="px-6 py-4 rounded-2xl font-black uppercase tracking-[0.2em] transition-all border bg-yellow-500 text-slate-900 hover:bg-yellow-400 active:scale-95 text-[11px]"
+              >
+                Offer
               </button>
             </div>
+          </div>
+
+          <div className="hidden lg:block flex-shrink-0 w-[160px]">
+            <Ad160x600 id="ad-160x600-side" />
           </div>
         </div>
 
         {/* Player Section */}
-        <div id="player" ref={playerRef} className="mt-32 scroll-mt-28">
+        <div className="flex justify-center py-6">
+          <Ad728 id="ad-728-theatre" />
+        </div>
+        <div id="player" ref={playerRef} className="mt-24 scroll-mt-28">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
             <div className="flex items-center gap-4">
               <div className="w-2 h-10 bg-blue-600 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.7)]"></div>
@@ -262,38 +311,51 @@ const DetailPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Bottom Ad */}
+        <div className="flex justify-center py-6">
+          <Ad728 id="ad-728-below-player" />
+        </div>
+
         {/* Cast */}
         {data.credits?.cast && data.credits.cast.length > 0 && (
-          <div className="mt-32">
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-2 h-10 bg-blue-600 rounded-full"></div>
-              <h2 className="text-3xl font-black text-white uppercase tracking-tighter">LEAD PERFORMANCES</h2>
-            </div>
-            <div className="flex gap-8 overflow-x-auto pb-12 no-scrollbar snap-inline touch-pan-x">
-              {data.credits.cast.slice(0, 18).map(actor => (
-                <div key={actor.id} className="snap-item flex-shrink-0 w-40 group">
-                  <div className="aspect-[3/4] rounded-3xl overflow-hidden glass border border-white/10 mb-5 transition-all duration-700 group-hover:scale-105 group-hover:border-blue-500/50 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
-                    <img 
-                      src={actor.profile_path ? `${TMDB_IMAGE_BASE}${actor.profile_path}` : `https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=300&auto=format&fit=crop`} 
-                      className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" 
-                      alt={actor.name}
-                      loading="lazy"
-                    />
+          <div>
+            <Ad728 id="ad-728-cast" />
+            <div className="mt-32">
+              <div className="flex items-center gap-4 mb-12">
+                <div className="w-2 h-10 bg-blue-600 rounded-full"></div>
+                <h2 className="text-3xl font-black text-white uppercase tracking-tighter">LEAD PERFORMANCES</h2>
+              </div>
+              <div className="flex gap-8 overflow-x-auto pb-12 no-scrollbar snap-inline touch-pan-x">
+                {data.credits.cast.slice(0, 18).map(actor => (
+                  <div key={actor.id} className="snap-item flex-shrink-0 w-40 group">
+                    <div className="aspect-[3/4] rounded-3xl overflow-hidden glass border border-white/10 mb-5 transition-all duration-700 group-hover:scale-105 group-hover:border-blue-500/50 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
+                      <img 
+                        src={actor.profile_path ? `${TMDB_IMAGE_BASE}${actor.profile_path}` : `https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=300&auto=format&fit=crop`} 
+                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" 
+                        alt={actor.name}
+                        loading="lazy"
+                      />
+                    </div>
+                    <p className="text-sm font-black text-white line-clamp-1 group-hover:text-blue-500 transition-colors uppercase tracking-tight">{actor.name}</p>
+                    <p className="text-[10px] font-black text-slate-500 line-clamp-1 uppercase tracking-widest opacity-60 mt-1">{actor.character}</p>
                   </div>
-                  <p className="text-sm font-black text-white line-clamp-1 group-hover:text-blue-500 transition-colors uppercase tracking-tight">{actor.name}</p>
-                  <p className="text-[10px] font-black text-slate-500 line-clamp-1 uppercase tracking-widest opacity-60 mt-1">{actor.character}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         )}
 
         {/* Recommendations */}
         {data.recommendations?.results && data.recommendations.results.length > 0 && (
-          <div className="mt-20">
-            <SectionRow title="Cinematic Matches" items={data.recommendations.results} type={type as MediaType} />
+          <div>
+            <Ad728 id="ad-728-recommendations" />
+            <div className="mt-20">
+              <SectionRow title="Cinematic Matches" items={data.recommendations.results} type={type as MediaType} />
+            </div>
           </div>
         )}
+
+        <SocialBar id="social-bar-detail" />
       </div>
     </div>
   );

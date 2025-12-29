@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { MyListItem } from '../types';
 import MediaCard from '../components/MediaCard';
+import Ad728 from '../components/Ad728';
+import SocialBar from '../components/SocialBar';
 
 const MyListPage: React.FC = () => {
   const [items, setItems] = useState<MyListItem[]>([]);
@@ -56,6 +58,8 @@ const MyListPage: React.FC = () => {
         </div>
       </div>
 
+      <Ad728 id="ad-728-mylist-top" />
+
       {filteredItems.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8 mb-32">
           {filteredItems.map((item) => (
@@ -86,6 +90,8 @@ const MyListPage: React.FC = () => {
           <p className="text-slate-500 font-black uppercase tracking-widest text-xs opacity-60">Begin your collection by exploring the cinema.</p>
         </div>
       )}
+
+      <SocialBar id="social-bar-mylist" />
     </div>
   );
 };

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { tmdbService } from '../services/tmdbService';
 import { TMDBMedia } from '../types';
 import SectionRow from '../components/SectionRow';
+import Ad728 from '../components/Ad728';
+import SocialBar from '../components/SocialBar';
 import { TMDB_BACKDROP_BASE } from '../constants';
 
 const HomePage: React.FC = () => {
@@ -47,8 +49,12 @@ const HomePage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-12 h-12 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
+      <div>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="w-12 h-12 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
+
+        <SocialBar id="social-bar-home" />
       </div>
     );
   }
@@ -94,12 +100,25 @@ const HomePage: React.FC = () => {
 
       {/* Rows */}
       <div className="space-y-6">
+        <Ad728 id="ad-728-trending" />
         <SectionRow title="Trending Now" items={trending} viewAllKey="trending" />
+
+        <Ad728 id="ad-728-popular-movies" />
         <SectionRow title="Popular Movies" items={popularMovies} type="movie" viewAllKey="popular-movies" />
+
+        <Ad728 id="ad-728-popular-tv" />
         <SectionRow title="Popular TV Shows" items={popularTV} type="tv" viewAllKey="popular-tv" />
+
+        <Ad728 id="ad-728-top-rated-movies" />
         <SectionRow title="Top Rated Movies" items={topRatedMovies} type="movie" viewAllKey="top-rated-movies" />
+
+        <Ad728 id="ad-728-upcoming" />
         <SectionRow title="Upcoming" items={upcoming} type="movie" viewAllKey="upcoming" />
+
+        <Ad728 id="ad-728-top-rated-tv" />
         <SectionRow title="Top Rated TV Shows" items={topRatedTV} type="tv" viewAllKey="top-rated-tv" />
+
+        <Ad728 id="ad-728-now-playing" />
         <SectionRow title="Now Playing" items={nowPlaying} type="movie" viewAllKey="now-playing" />
       </div>
     </div>

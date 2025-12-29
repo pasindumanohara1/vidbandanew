@@ -5,6 +5,8 @@ import { tmdbService } from '../services/tmdbService';
 import { TMDBMedia } from '../types';
 import { VIEW_ALL_MAP } from '../constants';
 import MediaCard from '../components/MediaCard';
+import Ad728 from '../components/Ad728';
+import SocialBar from '../components/SocialBar';
 
 const ViewAllPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -37,7 +39,7 @@ const ViewAllPage: React.FC = () => {
 
   return (
     <div className="pt-24 min-h-screen px-4 md:px-8 max-w-7xl mx-auto pb-20">
-      <div className="flex items-center gap-3 mb-10">
+        <div className="flex items-center gap-3 mb-10">
         <div className="w-1.5 h-10 bg-blue-600 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.6)]"></div>
         <div>
           <h1 className="text-4xl font-black text-white uppercase tracking-tighter">
@@ -48,6 +50,8 @@ const ViewAllPage: React.FC = () => {
           </p>
         </div>
       </div>
+
+      <Ad728 id="ad-728-viewall-top" />
 
       {loading ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
@@ -84,6 +88,8 @@ const ViewAllPage: React.FC = () => {
           </div>
         </>
       )}
+
+      <SocialBar id="social-bar-viewall" />
     </div>
   );
 };

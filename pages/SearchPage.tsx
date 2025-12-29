@@ -5,6 +5,8 @@ import { tmdbService } from '../services/tmdbService';
 import { TMDBMedia, TMDBPerson, MediaType } from '../types';
 import MediaCard from '../components/MediaCard';
 import PersonCard from '../components/PersonCard';
+import Ad728 from '../components/Ad728';
+import SocialBar from '../components/SocialBar';
 
 const SearchPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -56,6 +58,8 @@ const SearchPage: React.FC = () => {
         </h1>
         <p className="text-slate-500 font-bold text-xs uppercase tracking-widest">Page {page} of {totalPages}</p>
       </div>
+
+      <Ad728 id="ad-728-search-top" />
 
       <div className="flex gap-3 mb-10 overflow-x-auto pb-2 no-scrollbar">
         {tabs.map(tab => (
@@ -113,6 +117,9 @@ const SearchPage: React.FC = () => {
           <p className="text-xl text-slate-500 font-black uppercase tracking-tighter">No cinematic results found.</p>
         </div>
       )}
+
+      <Ad728 id="ad-728-search-bottom" />
+      <SocialBar id="social-bar-search" />
     </div>
   );
 };

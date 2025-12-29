@@ -1,0 +1,84 @@
+Popunder
+<script src="https://pl28345237.effectivegatecpm.com/18/e8/e0/18e8e08bef231a16fb67bdb2fc7ec5d0.js"></script>
+
+Native Banner
+<script async="async" data-cfasync="false" src="https://pl28345274.effectivegatecpm.com/6abf683ae4f5d2453425d78a7d241690/invoke.js"></script>
+<div id="container-6abf683ae4f5d2453425d78a7d241690"></div>
+
+Banner 468x60
+<script>
+  atOptions = {
+    'key' : '239861832e3b1642e89becae3b0978ff',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/239861832e3b1642e89becae3b0978ff/invoke.js"></script>
+
+Social Bar
+<script src="https://pl28345290.effectivegatecpm.com/b9/f5/b0/b9f5b008814c31e04a5d2f0fc3c15d4b.js"></script>
+
+Smartlink
+https://www.effectivegatecpm.com/z9icytup?key=0ad10dd7c15367b15db7864bfbce7781
+
+Banner 160x300
+<script>
+  atOptions = {
+    'key' : '95b97c837f68c1c095b871460c87198a',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/95b97c837f68c1c095b871460c87198a/invoke.js"></script>
+
+Banner 320x50
+<script>
+  atOptions = {
+    'key' : '5d2edd3ac89c6c1954a1ef6a3db75a0c',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/5d2edd3ac89c6c1954a1ef6a3db75a0c/invoke.js"></script>
+
+Banner 300x250
+<script>
+  atOptions = {
+    'key' : 'b7b9503357eacfd5d6a20f48a28440b7',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/b7b9503357eacfd5d6a20f48a28440b7/invoke.js"></script>
+
+Banner 160x600
+<script>
+  atOptions = {
+    'key' : 'f71f875ea4a8542f58b7b99d640aaa34',
+    'format' : 'iframe',
+    'height' : 600,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/f71f875ea4a8542f58b7b99d640aaa34/invoke.js"></script>
+
+Banner 728x90
+<script>
+  atOptions = {
+    'key' : 'ac236b54f4167ecf7cea58fee5e894e0',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/ac236b54f4167ecf7cea58fee5e894e0/invoke.js"></script>
